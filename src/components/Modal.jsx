@@ -1,4 +1,5 @@
 import { IconSquareRoundedXFilled } from "@tabler/icons-react";
+import { EMAIL_VALIDATIONS, FULL_NAME_VALIDATIONS, PASSWORD_VALIDATIONS } from "../constants/formValidations";
 
 const Modal = ({
   isShowModal,
@@ -39,16 +40,7 @@ const Modal = ({
             id="first_name"
             type="text"
             autoComplete="off"
-            {...register("first_name", {
-              required: {
-                value: true,
-                message: "This field is required",
-              },
-              maxLength: {
-                value: 25,
-                message: "Maximum 25 characters",
-              },
-            })}
+            {...register("first_name", FULL_NAME_VALIDATIONS)}
           />
           {errors.first_name && (
             <span className="text-xs text-red-500">
@@ -66,16 +58,7 @@ const Modal = ({
             id="last_name"
             type="text"
             autoComplete="off"
-            {...register("last_name", {
-              required: {
-                value: true,
-                message: "This field is required",
-              },
-              maxLength: {
-                value: 25,
-                message: "Maximum 25 characters",
-              },
-            })}
+            {...register("last_name", FULL_NAME_VALIDATIONS)}
           />
           {errors.last_name && (
             <span className="text-xs text-red-500">
@@ -93,17 +76,7 @@ const Modal = ({
             id="email"
             type="text"
             autoComplete="off"
-            {...register("email", {
-                required: {
-                    value: true,
-                    message: "This field is required",
-                  },
-              pattern: {
-                value:
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: "Wrong email format",
-              },
-            })}
+            {...register("email", EMAIL_VALIDATIONS)}
           />
 
           {errors.email && (
@@ -120,17 +93,7 @@ const Modal = ({
             id="password"
             type="password"
             autoComplete="off"
-            {...register("password", {
-                required: {
-                    value: true,
-                    message: "This field is required",
-                  },
-                  minLength:  {
-                    value: 8,
-                    message: "Minimum 8 characters",
-                  },
-
-            })}
+            {...register("password", PASSWORD_VALIDATIONS)}
           />
           {errors.password && (
             <span className="text-xs text-red-500">
